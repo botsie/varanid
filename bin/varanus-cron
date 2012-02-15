@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+libdir = File.expand_path("../../lib", __FILE__)
+$: << libdir unless $:.include? libdir
+
+require 'varanus/cron'
+
+app = Varanus::Cron.new(ARGV)
+app.run

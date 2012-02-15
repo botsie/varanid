@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+libdir = File.expand_path("../../lib", __FILE__)
+$: << libdir unless $:.include? libdir
+
+require 'varanus/listener'
+
+app = Varanus::Listener.new(ARGV)
+app.run
