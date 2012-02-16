@@ -3,7 +3,7 @@
 libdir = File.expand_path("../../lib", __FILE__)
 $: << libdir unless $:.include? libdir
 
-require 'varanus/cron'
+require 'varanus/crond'
 
-app = Varanus::Cron.new(ARGV)
+app = Varanus::Crond.new(ARGV)
 app.run
