@@ -7,3 +7,11 @@ group :test do
   gem 'rspec'
 end
 
+group :development do
+  gem 'guard'
+  gem 'growl'
+  gem 'guard-rspec'
+end
+
+
+
