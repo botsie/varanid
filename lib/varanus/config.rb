@@ -63,6 +63,7 @@ module Varanus
     end
 
     def []=(key, value)
+      value = Varanus::Check.new(value) if key == 'check'
       @data[key] = value
     end
 

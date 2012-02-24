@@ -4,6 +4,7 @@ libdir = File.expand_path("../../lib", __FILE__)
 $: << libdir unless $:.include? libdir
 
 require 'varanus/config'
+require 'varanus/check'
 require 'json'
 require 'fileutils'
 
@@ -103,6 +104,14 @@ describe Varanus::Config do
       
       c = Varanus::Config.new ["-d", test_data_dir]
       c['foo'].should == [1, 2, 3, 4, 5, 6]
+    end
+
+    it "should convert a check into a check object" do
+      content = {'check' => {'foo' => 'bar'}}
+      create_file("foo.json", content.to_json)
+
+      c = Varanus::Config.new ["-d", test_data_dir]
+      c['check'].should be_an_instance_of Varanus::Check
     end
     
     def create_file(name, content)
