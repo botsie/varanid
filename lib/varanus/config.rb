@@ -40,7 +40,8 @@ module Varanus
       Dir.glob(pattern) do |filename|
         content = File.open(filename, "r") { |f| f.read }
         config = JSON.parse content
-        config.each_pair do |key,value|
+        config.each_pair do |s_key,value|
+          key = s_key.to_sym
           if self.has_key? key
             if self[key].class == Array
               if value.class == Array
@@ -63,12 +64,20 @@ module Varanus
     end
 
     def []=(key, value)
-      value = Varanus::Check.new(value) if key == 'check'
+      value = Varanus::Check.new(value) if key == :check
       @data[key] = value
     end
 
     def has_key?(key)
       @data.has_key?(key)
+    end
+
+    def checks
+      if @data[:check].class == Array
+        return @data[:check]
+      else
+        return [ @data[:check] ]
+      end
     end
   end
 end

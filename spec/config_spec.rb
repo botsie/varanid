@@ -70,7 +70,7 @@ describe Varanus::Config do
       content = { 'foo' => 'bar' }
       create_file("foo.json", content.to_json)
       c = Varanus::Config.new ["-d", test_data_dir]
-      c['foo'].should == 'bar'
+      c[:foo].should == 'bar'
     end
 
     it "should merge two values into an array" do
@@ -80,7 +80,7 @@ describe Varanus::Config do
       create_file("foo2.json", content2.to_json)
       
       c = Varanus::Config.new ["-d", test_data_dir]
-      c['foo'].should == [ 'bar', 'bar2' ]
+      c[:foo].should == [ 'bar', 'bar2' ]
     end
 
     it "should merge multiple values into an array" do
@@ -92,7 +92,7 @@ describe Varanus::Config do
       create_file("foo3.json", content3.to_json)
       
       c = Varanus::Config.new ["-d", test_data_dir]
-      c['foo'].should == [ 'bar', 'bar2', 'bar3' ]
+      c[:foo].should == [ 'bar', 'bar2', 'bar3' ]
     end
     
     it "should merge multiple arrays into an array" do
@@ -103,7 +103,7 @@ describe Varanus::Config do
       
       
       c = Varanus::Config.new ["-d", test_data_dir]
-      c['foo'].should == [1, 2, 3, 4, 5, 6]
+      c[:foo].should == [1, 2, 3, 4, 5, 6]
     end
 
     it "should convert a check into a check object" do
@@ -111,7 +111,16 @@ describe Varanus::Config do
       create_file("foo.json", content.to_json)
 
       c = Varanus::Config.new ["-d", test_data_dir]
-      c['check'].should be_an_instance_of Varanus::Check
+      c[:check].should be_an_instance_of Varanus::Check
+    end
+    
+    it "should expose check objects via the checks mehod" do
+      content = {'check' => {'foo' => 'bar'}}
+      create_file("foo.json", content.to_json)
+
+      c = Varanus::Config.new ["-d", test_data_dir]
+      c.checks.should be_an_instance_of Array
+      c.checks.first.should be_an_instance_of Varanus::Check
     end
     
     def create_file(name, content)

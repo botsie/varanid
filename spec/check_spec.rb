@@ -14,5 +14,14 @@ describe Varanus::Check do
     expect { s = Varanus::Check.new(nil) }.to_not raise_error
   end
 
+  it "should expose the value of the interval property" do
+    s = Varanus::Check.new( { :every => '5m' } )
+    s.interval.should == '5m'
+  end
+
+  it "should expose the value of the crontab property" do
+    s = Varanus::Check.new( { :crontab => '5 * * * *' } )
+    s.crontab.should == '5 * * * *'
+  end
 end
 
