@@ -1,5 +1,6 @@
 
 module Varanus
+  # Understands 
   class Job
     def initialize(check, zmq_context)
       @check = check
@@ -12,6 +13,9 @@ module Varanus
     end
 
     def call
+      # execute check
+      @check.execute
+      # transmit results
     end
   end
 end

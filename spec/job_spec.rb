@@ -34,5 +34,14 @@ describe Varanus::Job do
 
     j.schedule_on scheduler_engine 
   end
+
+  it "should execute the check when called" do    
+    check = double("varanus_check")
+    j = Varanus::Job.new(check, nil)
+
+    check.should_receive(:execute)
+
+    j.call
+  end
 end
 
