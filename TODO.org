@@ -1,0 +1,6 @@
+* Cron
+** TODO Merge cron and scheduler
+** TODO Merge Check and Job
+** TODO Execute checks
+** TODO Transmit Results
+* Listener 
