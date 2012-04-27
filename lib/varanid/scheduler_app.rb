@@ -3,7 +3,7 @@ require 'rufus/scheduler'
 require 'varanid/config'
 
 module Varanid
-  class Crond
+  class SchedulerApp
     def initialize(args)
       @config = Varanid::Config.new(args)
       @zmq_context = ZMQ::Context.new(1)

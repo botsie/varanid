@@ -3,7 +3,7 @@
 libdir = File.expand_path("../../lib", __FILE__)
 $: << libdir unless $:.include? libdir
 
-require 'varanid/crond'
+require 'varanid/scheduler_app'
 
-app = Varanid::Crond.new(ARGV)
+app = Varanid::SchedulerApp.new(ARGV)
 app.run

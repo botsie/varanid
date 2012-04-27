@@ -14,8 +14,8 @@ module Varanid
 
     def schedule_checks
       @config.checks.each do |check|
-        job = Varanid::Job.new(check, @zmq_context)
-        job.schedule_on self.engine
+        check.schedule_on self.engine
+        # TODO: assign zmq context
       end
     end
   end

@@ -23,5 +23,25 @@ describe Varanid::Check do
     s = Varanid::Check.new( { :crontab => '5 * * * *' } )
     s.crontab.should == '5 * * * *'
   end
+
+  it "should schedule an every job if the check specifies it" do
+    check = Varanid::Check.new({ :every => '5m' })
+    scheduler_engine = double("rufus_scheduler")
+
+    scheduler_engine.should_receive(:every).with('5m', check)
+
+    check.schedule_on scheduler_engine
+  end
+
+  it "should schedule a cron job if the check specifies it" do
+    check = Varanid::Check.new({ :crontab => '5 * * * *' })
+
+    scheduler_engine = double("rufus_scheduler")
+
+    scheduler_engine.should_receive(:cron).with('5 * * * *', check) 
+
+    check.schedule_on scheduler_engine 
+  end
+
 end
 
