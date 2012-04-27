@@ -1,5 +1,5 @@
 
-module Varanus
+module Varanid
   # Understands 
   class Job
     def initialize(check, zmq_context)

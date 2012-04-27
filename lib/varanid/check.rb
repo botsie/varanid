@@ -1,5 +1,5 @@
 
-module Varanus
+module Varanid
   class Check
     def initialize(config)
       @config = config

@@ -1,6 +1,6 @@
 require 'zmq'
 
-module Varanus
+module Varanid
   class Pipeline
     def initialize(args)
     end

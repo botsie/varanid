@@ -3,7 +3,7 @@
 libdir = File.expand_path("../../lib", __FILE__)
 $: << libdir unless $:.include? libdir
 
-require 'varanus/listener'
+require 'varanid/pipeline'
 
-app = Varanus::Listener.new(ARGV)
+app = Varanid::Pipeline.new(ARGV)
 app.run

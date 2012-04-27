@@ -1,15 +1,15 @@
 require 'zmq'
 require 'rufus/scheduler'
-require 'varanus/config'
+require 'varanid/config'
 
-module Varanus
+module Varanid
   class Crond
     def initialize(args)
-      @config = Varanus::Config.new(args)
+      @config = Varanid::Config.new(args)
       @zmq_context = ZMQ::Context.new(1)
     end
     def run
-      @scheduler = Varanus::Scheduler.new(@config, @zmq_context)
+      @scheduler = Varanid::Scheduler.new(@config, @zmq_context)
       @scheduler.run
       # context = ZMQ::Context.new(1)
       # sender = context.socket(ZMQ::REQ)

@@ -1,6 +1,6 @@
 require 'rufus/scheduler'
 
-module Varanus
+module Varanid
   # Understands how to execute checks on a schedule
   class Scheduler
     attr_accessor :engine
@@ -14,7 +14,7 @@ module Varanus
 
     def schedule_checks
       @config.checks.each do |check|
-        job = Varanus::Job.new(check, @zmq_context)
+        job = Varanid::Job.new(check, @zmq_context)
         job.schedule_on self.engine
       end
     end

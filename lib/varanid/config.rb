@@ -2,7 +2,7 @@
 
 require 'optparse'
 
-module Varanus
+module Varanid
   class Config
 
     attr_accessor :directory
@@ -16,7 +16,7 @@ module Varanus
 
     def set_defaults
       @data = Hash.new
-      self.directory = "/etc/varanus"
+      self.directory = "/etc/varanid"
     end
     
     def parse_options(args)
@@ -64,7 +64,7 @@ module Varanus
     end
 
     def []=(key, value)
-      value = Varanus::Check.new(value) if key == :check
+      value = Varanid::Check.new(value) if key == :check
       @data[key] = value
     end
 
