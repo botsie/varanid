@@ -6,7 +6,7 @@ $: << libdir unless $:.include? libdir
 require 'varanid/config'
 require 'varanid/scheduler'
 require 'varanid/check'
-require 'varanid/job'
+
 require 'json'
 require 'fileutils'
 require 'rufus/scheduler'
